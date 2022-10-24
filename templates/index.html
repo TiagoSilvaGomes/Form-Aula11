@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="col-6">
+        <form action="{% url 'consulta' %}", method="post">
+                {% csrf_token %} 
+                {{% for field in form.visible_fields %}}
+                <dvi class = "form-group">
+                        <label for="{{field.id_for_label}}">{{field.label}}</label>
+                        {{field}}
+                </dvi>
+                {% endfor %}
+        <input type="submit" value="Enviar" class="btn btn-sucess" >
+        </form>   
+</section>    
+{% endblock %}
